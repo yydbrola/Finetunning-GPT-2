@@ -11,3 +11,6 @@ __pycache__/
 Modelo/
 *.log
 .DS_Store
+
+gpt2-eli5-*/
+checkpoint-*/

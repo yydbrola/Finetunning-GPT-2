@@ -1,0 +1,13 @@
+# Python & Virtual Environment
+venv/
+__pycache__/
+*.pyc
+
+# IDEs
+.vscode/
+.idea/
+
+# Project Specific
+Modelo/
+*.log
+.DS_Store

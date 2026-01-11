@@ -100,7 +100,7 @@ print(output[0]["generated_text"])
 
 ## 🔗 Links
 
-* [🤗 Modelo no Hugging Face](https://www.google.com/search?q=https://huggingface.co/Lookadragon21/GPT2_distil-Hugging_face_tutorial)
+* [🤗 Modelo no Hugging Face](https://huggingface.co/Lookadragon21/GPT2_distil-Hugging_face_tutorial)
 * [📂 Script de Pré-processamento](https://www.google.com/search?q=./prepare_eli5_for_clm.py)
 * [📊 Dataset ELI5](https://www.google.com/search?q=https://huggingface.co/datasets/eli5)
 

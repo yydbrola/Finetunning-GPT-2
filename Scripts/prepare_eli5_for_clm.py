@@ -74,3 +74,67 @@ from transformers import DataCollatorForLanguageModeling
 
 tokenizer.pad_token = tokenizer.eos_token
 data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)
+
+
+# ========================================
+# 8. CARREGAR MODELO GPT-2
+# ========================================
+from transformers import AutoModelForCausalLM
+
+model = AutoModelForCausalLM.from_pretrained("distilbert/distilgpt2")
+
+# ========================================
+# 9. CONFIGURAR TREINAMENTO
+# ========================================
+from transformers import TrainingArguments, Trainer
+
+training_args = TrainingArguments(
+    output_dir="./gpt2-eli5-finetuned-by-yvens",   # Onde salvar os checkpoints
+    
+    # === ESTRATÉGIA DE TREINAMENTO ===
+    num_train_epochs=3,                    # Número de épocas (passagens pelo dataset)
+    per_device_train_batch_size=8,         # Exemplos por batch (ajuste se der OOM)
+    per_device_eval_batch_size=8,          # Batch size para avaliação
+    
+    # === OTIMIZAÇÃO ===
+    learning_rate=2e-5,                    # Taxa de aprendizado
+    weight_decay=0.01,                     # Regularização (evita overfitting)
+    warmup_steps=500,                      # Passos de aquecimento do LR
+    
+    # === AVALIAÇÃO ===
+    eval_strategy="epoch",                 # Avaliar ao final de cada época
+    save_strategy="epoch",                 # Salvar checkpoint a cada época
+    load_best_model_at_end=True,           # Carregar o melhor modelo ao final
+    
+    # === LOGGING ===
+    logging_steps=100,                     # Log a cada 100 passos
+    
+    # === PERFORMANCE (CPU/GPU) ===
+    # fp16=True,                           # Descomente se tiver GPU NVIDIA
+    # push_to_hub=True,                    # Descomente para enviar ao HF Hub
+)
+
+# ========================================
+# 10. CRIAR TRAINER
+# ========================================
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=lm_dataset["train"],
+    eval_dataset=lm_dataset["test"],
+    data_collator=data_collator,
+    processing_class=tokenizer,
+)
+
+# ========================================
+# 11. TREINAR! 🚀
+# ========================================
+trainer.train()
+
+# ========================================
+# 12. SALVAR MODELO FINAL
+# ========================================
+trainer.save_model("./gpt2-eli5-final-by-Yvens")
+tokenizer.save_pretrained("./gpt2-eli5-final-by-Yvens-Yan")
+
+print("✅ Treinamento concluído!")

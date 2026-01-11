@@ -1,6 +1,3 @@
-Com certeza. Aqui está a versão traduzida para o **Português**, mantendo a formatação técnica ideal para o seu portfólio no GitHub.
-
-Mantive os termos técnicos em inglês (como *Fine-Tuning*, *Perplexity*, *Tokenization*) quando apropriado, pois são padrão na indústria, mas traduzi as explicações.
 
 ```markdown
 # 🧠 Fine-Tuning do GPT-2 no Dataset ELI5
@@ -113,8 +110,4 @@ print(output[0]["generated_text"])
 Desenvolvido por <strong>Yvens</strong> | <a href="https://www.google.com/search?q=https://huggingface.co/Lookadragon21">Perfil Hugging Face</a>
 </p>
 
-```
 
-Gostaria que eu salvasse isso no seu sistema de arquivos ou fizesse alguma outra alteração?
-
-```

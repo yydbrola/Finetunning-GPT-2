@@ -1,0 +1,13 @@
+# Core ML dependencies
+transformers>=4.30.0
+datasets>=2.14.0
+torch>=2.0.0
+
+# Hugging Face Hub integration
+huggingface_hub>=0.16.0
+
+# Optional: for faster tokenization
+tokenizers>=0.13.0
+
+# Optional: for GPU acceleration metrics
+accelerate>=0.20.0
